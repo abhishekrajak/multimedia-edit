@@ -44,15 +44,10 @@ app.get('/', (req, res) => {
 
 app.post('/upload', upload.single('myfile'), (req, res) => {
     let filePath = path.join(__dirname, '/uploads', req.file.filename)
-    console.log(filePath)
     jimp.read(filePath, (err, file) => {
         if (err) {
             throw err
         }
-        console.log(__dirname)
-        console.log(file.getHeight(), file.getWidth())
-        console.log(req.body)
-        console.log(typeof req.body.height)
         file.resize(parseInt(req.body.height), parseInt(req.body.width)).write(
             path.join(__dirname, '/downloads', req.file.filename)
         )
