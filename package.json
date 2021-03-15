@@ -1,0 +1,35 @@
+{
+    "name": "photo-edit",
+    "version": "1.0.0",
+    "description": "photo edit api",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start": "nodemon server.js"
+    },
+    "keywords": [
+        "photo",
+        "edit",
+        "app"
+    ],
+    "author": "Abhishek Rajak",
+    "license": "ISC",
+    "dependencies": {
+        "dotenv": "^8.2.0",
+        "express": "^4.17.1",
+        "jimp": "^0.16.1",
+        "mongoose": "^5.11.19",
+        "morgan": "^1.10.0",
+        "multer": "^1.4.2",
+        "nodemon": "^2.0.7"
+    },
+    "devDependencies": {
+        "prettier": "2.2.1"
+    },
+    "prettier": {
+        "trailingComma": "es5",
+        "tabWidth": 4,
+        "semi": false,
+        "singleQuote": true
+    }
+}

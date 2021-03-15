@@ -1,0 +1,9 @@
+* {
+    background-color: rgb(255, 255, 255);
+}
+
+#title {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 3rem;
+    text-align: center;
+}

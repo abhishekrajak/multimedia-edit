@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Image Resize</title>
+    <script async defer src="script.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <h1>Image Resize Module</h1>
+    <form id='myform' action="http://localhost:3000/upload" method="POST" enctype='multipart/form-data'>
+        <label for="myfile">Select a file:</label>
+        <input type="file" id="myfile" accept=".jpeg, .png, .jpg" name="myfile" required><br><br>
+        <label for="height">height(px) : </label>
+        <input type='number' min='1' max='2000' name='height' id='height' required>
+        <label for="width">width(px) : </label>
+        <input type='number' min='1' max='2000' name='width' id='width' required><br><br>
+        <input type="submit">
+    </form>
+</body>
+
+</html>
