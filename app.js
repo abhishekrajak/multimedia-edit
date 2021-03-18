@@ -47,7 +47,7 @@ app.post('/image/edit', upload.single('myfile'), (req, res) => {
         if (err) {
             throw err
         }
-        file.resize(parseInt(req.body.height), parseInt(req.body.width)).write(
+        file.resize(parseInt(req.body.width),parseInt(req.body.height)).write(
             path.join(__dirname, '/downloads', req.file.filename)
         )
         const r = fs.createReadStream(
