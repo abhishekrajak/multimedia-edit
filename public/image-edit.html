@@ -3,6 +3,8 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <title>Image Resize</title>
     <script async defer src='image-edit-script.js'></script>
     <link rel="stylesheet" href="style.css">
@@ -10,7 +12,7 @@
 
 <body>
     <h1>Image Resize Module</h1>
-    <form id='myform' action="https://multimedia-edit.herokuapp.com/image/edit" method="POST" enctype='multipart/form-data'>
+    <form id='myform' action="http://localhost:3000/api/image/edit" method="POST" enctype='multipart/form-data'>
         <label for="myfile">Select a file:</label>
         <input type="file" id="myfile" accept=".jpeg, .png, .jpg" name="myfile" required><br>
         <p id='file-height-width'>Height : 0 px Breadth : 0 px</p>
@@ -18,8 +20,9 @@
         <input type='number' min='10' max='5000' name='height' id='height' required>
         <label for="width">width(px) : </label>
         <input type='number' min='10' max='5000' name='width' id='width' required><br><br>
-        <input type="submit">
+        <input type="submit" onclick='formSubmit()'>
     </form>
 </body>
 
 </html>
+

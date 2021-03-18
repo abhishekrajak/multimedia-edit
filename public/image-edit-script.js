@@ -1,3 +1,4 @@
+const myform = document.getElementById('myform')
 const myfile = document.getElementById('myfile')
 const file_height_width = document.getElementById('file-height-width');
 
@@ -17,4 +18,9 @@ myfile.onchange = function () {
         }
     }
     reader.readAsDataURL(myfile.files[0])
+}
+
+function formSubmit(){
+    myform.submit()
+    myform.reset()
 }
