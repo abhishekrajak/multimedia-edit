@@ -7,6 +7,7 @@ const fs = require('fs')
 const morgan = require('morgan')
 const jimp = require('jimp')
 const stream = require('stream')
+const sharp = require('sharp');
 
 const multer = require('multer')
 
@@ -41,25 +42,32 @@ app.get('/', (req, res) => {
     })
 })
 
-app.post('/image/edit', upload.single('myfile'), (req, res) => {
-    let filePath = path.join(__dirname, '/uploads', req.file.filename)
-    jimp.read(filePath, (err, file) => {
-        if (err) {
-            throw err
-        }
-        file.resize(parseInt(req.body.width),parseInt(req.body.height)).write(
-            path.join(__dirname, '/downloads', req.file.filename)
-        )
-        const r = fs.createReadStream(
-            filePath = path.join(__dirname, '/downloads', req.file.filename)
-        )
+app.post('/image/edit', upload.single('myfile'), async (req, res) => {
+    const filePath = path.join(__dirname, '/uploads', req.file.filename)
+    const downloadPath = path.join(__dirname, 'downloads', req.file.filename);
 
+    try{
+        const r = await sharp(filePath).
+        resize(parseInt(req.body.width), parseInt(req.body.height), {
+            fit: 'fill'
+        }).toFile(downloadPath)
+        console.log(r);
+        const readStream = fs.createReadStream(
+            downloadPath
+        )
         res.writeHead(200,
             {'Content-disposition': `attachment; filename=${req.file.originalname}`});
 
-        r.pipe(res)
-    })
-})
+        readStream.pipe(res)
+    }catch (err){
+        console.log(err);
+        res.status(404).json({
+            result: 'error',
+            message : err
+        })
+    }
 
+
+});
 
 module.exports = app
