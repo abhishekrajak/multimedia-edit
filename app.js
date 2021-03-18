@@ -2,25 +2,24 @@ const express = require('express')
 const path = require('path')
 const bodyParser = require('body-parser')
 const app = express()
-const port = 3000
 const qs = require('querystring')
 const fs = require('fs')
 const morgan = require('morgan')
 const jimp = require('jimp')
 const stream = require('stream')
 
-var multer = require('multer')
+const multer = require('multer')
 
-var storage = multer.diskStorage({
-    destination: function (req, file, cb) {
+const storage = multer.diskStorage({
+    destination: function(req, file, cb) {
         cb(null, 'uploads/')
     },
-    filename: function (req, file, cb) {
+    filename: function(req, file, cb) {
         cb(null, Date.now() + path.extname(file.originalname))
     },
 })
 
-var upload = multer({ storage: storage })
+const upload = multer({ storage: storage })
 
 const dotenv = require('dotenv')
 dotenv.config({ path: './config.env' })
@@ -42,7 +41,7 @@ app.get('/', (req, res) => {
     })
 })
 
-app.post('/upload', upload.single('myfile'), (req, res) => {
+app.post('/image/edit', upload.single('myfile'), (req, res) => {
     let filePath = path.join(__dirname, '/uploads', req.file.filename)
     jimp.read(filePath, (err, file) => {
         if (err) {
@@ -52,17 +51,15 @@ app.post('/upload', upload.single('myfile'), (req, res) => {
             path.join(__dirname, '/downloads', req.file.filename)
         )
         const r = fs.createReadStream(
-            path.join(__dirname, '/downloads', req.file.filename)
+            filePath = path.join(__dirname, '/downloads', req.file.filename)
         )
-        const ps = new stream.PassThrough()
-        stream.pipeline(r, ps, (err) => {
-            if (err) {
-                console.log(err)
-                return res.sendStatus(400)
-            }
-        })
-        ps.pipe(res)
+
+        res.writeHead(200,
+            {'Content-disposition': `attachment; filename=${req.file.originalname}`});
+
+        r.pipe(res)
     })
 })
+
 
 module.exports = app
