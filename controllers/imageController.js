@@ -4,7 +4,7 @@ const sharp = require('sharp')
 const fs = require('fs')
 
 exports.imageResize = catchAsync(async (req, res) => {
-    const uploadPath = path.join(__dirname, '../upload', req.file.filename)
+    const uploadPath = path.join(__dirname, '../uploads', req.file.filename)
     const downloadPath = path.join(__dirname, '../downloads', req.file.filename);
 
     try{
