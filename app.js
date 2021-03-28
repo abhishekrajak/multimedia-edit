@@ -21,27 +21,11 @@ if (process.env.NODE_ENV === 'development') {
     app.use(morgan('dev'))
 }
 
-app.get(
-    '/',
-    catchAsync((req, res) => {
-        try {
-            let cookies = cookie.parse(req.headers.cookie)
-            if (cookies === undefined) {
-                throw new Error('cookie not found')
-            }
-            let decoded = jwt.verify(cookies.jwt, process.env.JWT_SECRET_TOKEN)
-            console.log('decoded', decoded)
-        } catch (err) {
-            // console.log('error caught', err)
-            res.redirect('http://localhost:3000/redirect.html')
-            return
-        }
-
-        res.status(200).sendFile(`./public/image-edit.html`, {
-            root: __dirname,
-        })
+app.get('/', (req, res) => {
+    res.status(200).sendFile(`./public/image-edit.html`, {
+        root: __dirname,
     })
-)
+})
 
 app.get('/login', (req, res) => {
     res.status(200).sendFile('./public/login.html', {
