@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Resize</title>
+    <script async defer></script>
+    <link rel="stylesheet">
+  </head>
+  <body>
+    <h1>Image Resize Module</h1>
+    <form id="myform" method="post" enctype="multipart/form-data">
+      <label for="myfile">select a file -></label>
+      <input id="myfile" for="myfile" type="file" accept=".jpeg, .png, .jpg" name="myfile" required><br>
+      <p id="file-height-width">Height : 0 px Breadth : 0 px</p>
+      <label for="height"> height(px) :</label>
+      <input id="height" type="number" min="10" max="5000" name="height" required><br>
+      <label for="width"> width(px) :</label>
+      <input id="width" type="number" min="10" max="5000" name="width" required><br>
+      <input type="submit" onclick="formSubmit()">
+    </form>
+    <p> </p>
+  </body>
+</html>

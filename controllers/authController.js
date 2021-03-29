@@ -27,3 +27,5 @@ exports.login = catchAsync(async (req, res, next) => {
         next(new Error('password does not match'))
     }
 })
+
+exports.createAccount = catchAsync(async (req, res, next) => {})

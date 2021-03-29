@@ -1,0 +1,23 @@
+doctype html
+html(lang='en')
+    head
+        meta(charset='UTF-8', name='viewport', content='width=device-width, initial-scale=1.0')
+        title Image Resize
+        script(async, defer, src=script_src)
+        link(rel='stylesheet', href=style_src)
+    body
+        h1 Image Resize Module
+        form(id='myform', action=api_src, method='post', enctype='multipart/form-data')
+            label(for='myfile') select a file ->
+            input#myfile(for='myfile', type='file',accept='.jpeg, .png, .jpg', name='myfile', required)
+            br
+            p#file-height-width Height : 0 px Breadth : 0 px
+            label(for='height')  height(px) :
+            input#height(type='number', min='10', max='5000', name='height', required)
+            br
+            label(for='width')  width(px) :
+            input#width(type='number', min='10', max='5000', name='width', required)
+            br
+            input(type='submit', onclick='formSubmit()')
+
+        p !{app.locals}

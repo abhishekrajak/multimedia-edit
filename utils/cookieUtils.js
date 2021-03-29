@@ -6,6 +6,5 @@ exports.validateCookie = (req, res) => {
     if (cookies === undefined) {
         throw new Error('cookie not found')
     }
-    let decoded = jwt.verify(cookies.jwt, process.env.JWT_SECRET_TOKEN)
-    return decoded
+    return jwt.verify(cookies.jwt, process.env.JWT_SECRET_TOKEN)
 }

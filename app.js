@@ -33,6 +33,20 @@ app.get('/login', (req, res) => {
     })
 })
 
+app.get('/create-account', (req, res) => {
+    res.status(200).sendFile('./public/create-account.html', {
+        root: __dirname,
+    })
+})
+
+app.get('/test', (req, res) => {
+    const x = res.render('image-edit', {
+        script_src: 'http://localhost:3000/image-edit-script.js',
+        style_src: 'http://localhost:3000/style.css',
+        api_src: 'http://localhost:3000/api/image/edit',
+    })
+})
+
 app.use('/api/image/edit', imageRouter)
 app.use('/api/user', userRouter)
 
