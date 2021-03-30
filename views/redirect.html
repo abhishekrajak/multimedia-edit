@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>redirect</title>
+    <script async defer></script>
+    <script async defer>
+      function counter() {
+          count--
+          x.innerText = count.toString(10)
+          if (count === 0) {
+              window.location.href = ''
+          }
+      }
+      
+    </script>
+  </head>
+  <body onload="start()">
+    <p></p> app will redirect in
+    <span id="count"></span> seconds...<br>
+  </body>
+</html>

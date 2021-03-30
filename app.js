@@ -19,31 +19,38 @@ app.use(bodyParser.json())
 
 if (process.env.NODE_ENV === 'development') {
     app.use(morgan('dev'))
+    app.locals.base_url = 'http://localhost:3000'
+} else {
+    app.locals.base_url = 'https://multimedia-edit.herokuapp.com'
 }
 
+const base_url = app.locals.base_url
+app.locals.redirect_script_src = base_url + '/scripts/redirect-script.js'
+app.locals.login_api_src = base_url + '/api/user/login'
+app.locals.image_edit_script_src = base_url + '/scripts/image-edit-script.js'
+app.locals.image_edit_style_src = base_url + '/stylesheets/style.css'
+app.locals.image_edit_api_src = base_url + '/api/image/edit'
+app.locals.create_account_api_src = base_url + '/api/user/create-account'
+app.locals.redirect_api_src = base_url + '/login'
+console.log(app.locals)
+
 app.get('/', (req, res) => {
-    res.status(200).sendFile(`./public/image-edit.html`, {
-        root: __dirname,
+    res.render('image-edit', {
+        image_edit_script_src: req.app.locals.image_edit_scripts_src,
+        image_edit_style_src: req.app.locals.image_edit_style_src,
+        image_edit_api_src: req.app.locals.image_edit_api_src,
     })
 })
 
 app.get('/login', (req, res) => {
-    res.status(200).sendFile('./public/login.html', {
-        root: __dirname,
+    res.render('login', {
+        login_api_src: req.app.locals.login_api_src,
     })
 })
 
 app.get('/create-account', (req, res) => {
-    res.status(200).sendFile('./public/create-account.html', {
-        root: __dirname,
-    })
-})
-
-app.get('/test', (req, res) => {
-    const x = res.render('image-edit', {
-        script_src: 'http://localhost:3000/image-edit-script.js',
-        style_src: 'http://localhost:3000/style.css',
-        api_src: 'http://localhost:3000/api/image/edit',
+    res.render('create-account', {
+        create_account_api_src: req.app.locals.create_account_api_src,
     })
 })
 

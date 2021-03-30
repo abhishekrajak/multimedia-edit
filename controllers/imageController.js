@@ -3,6 +3,7 @@ const path = require('path')
 const sharp = require('sharp')
 const fs = require('fs')
 const cookieUtils = require('../utils/cookieUtils')
+const app = require('../app')
 
 exports.imageResize = catchAsync(async (req, res, next) => {
     const uploadPath = path.join(__dirname, '../uploads', req.file.filename)
@@ -11,7 +12,11 @@ exports.imageResize = catchAsync(async (req, res, next) => {
     try {
         let decoded = cookieUtils.validateCookie(req, res)
     } catch (err) {
-        res.redirect('http://localhost:3000/redirect.html')
+        res.render('redirect', {
+            redirect_script_src: req.app.locals.redirect_script_src,
+            redirect_issue_message: 'please login to use app',
+            redirect_api_src: req.app.locals.redirect_api_src,
+        })
         return
     }
     try {

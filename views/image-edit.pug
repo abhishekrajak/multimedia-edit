@@ -3,11 +3,11 @@ html(lang='en')
     head
         meta(charset='UTF-8', name='viewport', content='width=device-width, initial-scale=1.0')
         title Image Resize
-        script(async, defer, src=script_src)
-        link(rel='stylesheet', href=style_src)
+        script(async, defer, src=image_edit_script_src)
+        link(rel='stylesheet', href=image_edit_style_src)
     body
         h1 Image Resize Module
-        form(id='myform', action=api_src, method='post', enctype='multipart/form-data')
+        form(id='myform', action=image_edit_api_src, method='post', enctype='multipart/form-data')
             label(for='myfile') select a file ->
             input#myfile(for='myfile', type='file',accept='.jpeg, .png, .jpg', name='myfile', required)
             br
@@ -20,4 +20,3 @@ html(lang='en')
             br
             input(type='submit', onclick='formSubmit()')
 
-        p !{app.locals}

@@ -1,0 +1,22 @@
+doctype html
+html(lang='en')
+    head
+        meta(charset='UTF-8', name='viewport', content='width=device-width, initial-scale=1.0')
+        title redirect
+        script(async, defer, src=redirect_script_src)
+        script(async, defer).
+            function counter() {
+                count--
+                x.innerText = count.toString(10)
+                if (count === 0) {
+                    window.location.href = '#{redirect_api_src}'
+                }
+            }
+
+    body(onload='start()')
+        p
+        | #{redirect_issue_message} app will redirect in
+        |
+        span#count
+        |  seconds...
+        br
