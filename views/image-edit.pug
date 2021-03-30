@@ -7,6 +7,7 @@ html(lang='en')
         link(rel='stylesheet', href=image_edit_style_src)
     body
         h1 Image Resize Module
+        p welcome #{name}
         form(id='myform', action=image_edit_api_src, method='post', enctype='multipart/form-data')
             label(for='myfile') select a file ->
             input#myfile(for='myfile', type='file',accept='.jpeg, .png, .jpg', name='myfile', required)

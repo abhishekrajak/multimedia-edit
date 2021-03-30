@@ -6,6 +6,7 @@ const morgan = require('morgan')
 const imageRouter = require('./routes/imageRoutes')
 const userRouter = require('./routes/userRoutes')
 const catchAsync = require('./utils/catchAsync')
+const cookieUtils = require('./utils/cookieUtils')
 
 const dotenv = require('dotenv')
 dotenv.config({ path: './config.env' })
@@ -35,23 +36,42 @@ app.locals.redirect_api_src = base_url + '/login'
 console.log(app.locals)
 
 app.get('/', (req, res) => {
-    res.render('image-edit', {
-        image_edit_script_src: req.app.locals.image_edit_scripts_src,
-        image_edit_style_src: req.app.locals.image_edit_style_src,
-        image_edit_api_src: req.app.locals.image_edit_api_src,
-    })
+    try {
+        const decoded = cookieUtils.validateCookie(req, res)
+        res.render('image-edit', {
+            image_edit_script_src: req.app.locals.image_edit_scripts_src,
+            image_edit_style_src: req.app.locals.image_edit_style_src,
+            image_edit_api_src: req.app.locals.image_edit_api_src,
+            name: decoded.name,
+        })
+        return
+    } catch (e) {
+        res.redirect('/login')
+    }
 })
 
 app.get('/login', (req, res) => {
-    res.render('login', {
-        login_api_src: req.app.locals.login_api_src,
-    })
+    try {
+        const decoded = cookieUtils.validateCookie(req, res)
+        res.redirect('/')
+        return
+    } catch (e) {
+        res.render('login', {
+            login_api_src: req.app.locals.login_api_src,
+        })
+    }
 })
 
 app.get('/create-account', (req, res) => {
-    res.render('create-account', {
-        create_account_api_src: req.app.locals.create_account_api_src,
-    })
+    try {
+        const decoded = cookieUtils.validateCookie(req, res)
+        res.redirect('/')
+        return
+    } catch (e) {
+        res.render('create-account', {
+            create_account_api_src: req.app.locals.create_account_api_src,
+        })
+    }
 })
 
 app.use('/api/image/edit', imageRouter)

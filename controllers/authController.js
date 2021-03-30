@@ -3,7 +3,7 @@ const catchAsync = require('../utils/catchAsync')
 const jwt = require('jsonwebtoken')
 
 const signToken = (id) => {
-    return jwt.sign({ id: 'Abhishek' }, process.env.JWT_SECRET_TOKEN, {
+    return jwt.sign({ name: 'Abhishek' }, process.env.JWT_SECRET_TOKEN, {
         expiresIn: process.env.JWT_EXPIRES_IN,
     })
 }
@@ -23,6 +23,7 @@ exports.login = catchAsync(async (req, res, next) => {
             image_edit_script_src: req.app.locals.image_edit_scripts_src,
             image_edit_style_src: req.app.locals.image_edit_style_src,
             image_edit_api_src: req.app.locals.image_edit_api_src,
+            name: user.name,
         })
     } else {
         res.render('redirect', {

@@ -11,6 +11,7 @@ exports.imageResize = catchAsync(async (req, res, next) => {
 
     try {
         let decoded = cookieUtils.validateCookie(req, res)
+        console.log(decoded)
     } catch (err) {
         res.render('redirect', {
             redirect_script_src: req.app.locals.redirect_script_src,
