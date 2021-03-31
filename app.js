@@ -5,7 +5,6 @@ const app = express()
 const morgan = require('morgan')
 const imageRouter = require('./routes/imageRoutes')
 const userRouter = require('./routes/userRoutes')
-const catchAsync = require('./utils/catchAsync')
 const cookieUtils = require('./utils/cookieUtils')
 
 const dotenv = require('dotenv')
