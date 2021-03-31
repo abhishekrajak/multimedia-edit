@@ -5,10 +5,22 @@
     <title>Image Resize</title>
     <script async defer></script>
     <link rel="stylesheet">
+    <style>
+      *{
+          font-family: 'Courier New', Courier, monospace;
+          font-size: 1.1rem;
+          text-align: center;
+          background-color: antiquewhite;
+      }
+      
+    </style>
   </head>
   <body>
     <h1>Image Resize Module</h1>
-    <p>welcome </p>
+    <form method="post">
+      <p>welcome </p>
+      <input type="submit" value="logout"><br><br>
+    </form>
     <form id="myform" method="post" enctype="multipart/form-data">
       <label for="myfile">select a file -></label>
       <input id="myfile" for="myfile" type="file" accept=".jpeg, .png, .jpg" name="myfile" required><br>

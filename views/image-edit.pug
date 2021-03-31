@@ -5,9 +5,21 @@ html(lang='en')
         title Image Resize
         script(async, defer, src=image_edit_script_src)
         link(rel='stylesheet', href=image_edit_style_src)
+        style.
+            *{
+                font-family: 'Courier New', Courier, monospace;
+                font-size: 1.1rem;
+                text-align: center;
+                background-color: antiquewhite;
+            }
+
     body
         h1 Image Resize Module
-        p welcome #{name}
+        form(method="post", action=logout_api_src)
+            p welcome #{name}
+            input(type='submit' value='logout')
+            br
+            br
         form(id='myform', action=image_edit_api_src, method='post', enctype='multipart/form-data')
             label(for='myfile') select a file ->
             input#myfile(for='myfile', type='file',accept='.jpeg, .png, .jpg', name='myfile', required)

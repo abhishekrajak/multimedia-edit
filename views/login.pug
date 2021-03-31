@@ -3,13 +3,23 @@ html(lang='en')
     head
         meta(charset='UTF-8', name='viewport', content='width=device-width, initial-scale=1.0')
         title Login
+        style.
+            *{
+                background: antiquewhite;
+                text-align: center;
+            }
     body
         h1 Login Page
         form(action=login_api_src, method='post')
-            label(for='email') email
+            label(for='email') email :
             input#email(name='email', type='text')
             br
-            label(for='password') password
+            br
+            label(for='password') password :
             input#password(name='password', type='password')
             br
+            br
             input(type='submit')
+            br
+            br
+        button(onclick=`location.href='${create_account_url}'`) create-account

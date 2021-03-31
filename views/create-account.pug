@@ -3,16 +3,24 @@ html(lang='en')
     head
         meta(charset='UTF-8', name='viewport', content='width=device-width, initial-scale=1.0')
         title create account
+        style.
+            * {
+                background: antiquewhite;
+                text-align: center;
+            }
     body
         h1 Create Account Form
         form(method='post', action=create_account_api_src)
             label(for='name') name :
             input#name(type='text', name='name')
             br
+            br
             label(for='email') email :
             input#email(type='text', name='email')
             br
-            label(for='password') password:
+            br
+            label(for='password') password :
             input#password(type='password', name='password')
+            br
             br
             input(type='submit')
