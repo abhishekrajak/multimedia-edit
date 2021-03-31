@@ -5,6 +5,7 @@ const app = express()
 const morgan = require('morgan')
 const imageRouter = require('./routes/imageRoutes')
 const userRouter = require('./routes/userRoutes')
+const catchAsync = require('./utils/catchAsync')
 const cookieUtils = require('./utils/cookieUtils')
 
 const dotenv = require('dotenv')
@@ -83,7 +84,7 @@ app.use((req, res, next) => {
 app.use((error, req, res, next) => {
     res.status(error.status || 500).json({
         error: {
-            message: error.message,
+            message: error.message || 'Internal Server Error',
         },
     })
 })

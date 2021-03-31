@@ -14,11 +14,11 @@
     <h1>Create Account Form</h1>
     <form method="post">
       <label for="name">name :</label>
-      <input id="name" type="text" name="name"><br><br>
+      <input id="name" type="text" name="name" required minlength="3" maxlength="25"><br><br>
       <label for="email">email :</label>
-      <input id="email" type="text" name="email"><br><br>
+      <input id="email" type="email" name="email" required><br><br>
       <label for="password">password :</label>
-      <input id="password" type="password" name="password"><br><br>
+      <input id="password" type="password" name="password" required minlength="6" maxlength="20"><br><br>
       <input type="submit">
     </form>
   </body>

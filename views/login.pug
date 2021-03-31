@@ -12,11 +12,11 @@ html(lang='en')
         h1 Login Page
         form(action=login_api_src, method='post')
             label(for='email') email :
-            input#email(name='email', type='text')
+            input#email(name='email', type='email')
             br
             br
             label(for='password') password :
-            input#password(name='password', type='password')
+            input#password(name='password', type='password', minlength='6', maxlength='20')
             br
             br
             input(type='submit')

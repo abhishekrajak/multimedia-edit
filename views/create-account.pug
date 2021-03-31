@@ -12,15 +12,16 @@ html(lang='en')
         h1 Create Account Form
         form(method='post', action=create_account_api_src)
             label(for='name') name :
-            input#name(type='text', name='name')
+            input#name(type='text', name='name', required, minlength='3', maxlength='25')
             br
             br
             label(for='email') email :
-            input#email(type='text', name='email')
+            input#email(type='email', name='email', required)
             br
             br
             label(for='password') password :
-            input#password(type='password', name='password')
+            input#password(type='password', name='password', required, minlength='6',
+            maxlength='20')
             br
             br
             input(type='submit')
