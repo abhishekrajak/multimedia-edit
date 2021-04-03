@@ -72,6 +72,18 @@ app.get('/create-account', (req, res) => {
     }
 })
 
+app.get('/demo', (req, res) => {
+    const decoded = {
+        name: 'demo',
+    }
+    res.render('image-edit', {
+        image_edit_script_src: req.app.locals.image_edit_scripts_src,
+        image_edit_style_src: req.app.locals.image_edit_style_src,
+        image_edit_api_src: req.app.locals.image_edit_api_src,
+        name: decoded.name,
+    })
+})
+
 app.use('/image/edit', imageRouter)
 app.use('/user', userRouter)
 
