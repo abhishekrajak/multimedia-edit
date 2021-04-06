@@ -5,23 +5,42 @@ html(lang='en')
         title create account
         style.
             * {
-                background: antiquewhite;
+                font-family: monospace;
+            }
+
+            .container {
                 text-align: center;
             }
+
+            h1 {
+                margin: 25px;
+            }
+
+            .btn, input {
+                margin: 7px;
+                border-radius: 10px;
+            }
+
+            input:focus {
+                outline: none;
+            }
+        link(rel="apple-touch-icon", sizes="180x180", href=`${base_url}/icons/apple-touch-icon.png`)
+        link(rel='icon', type='image/png', sizes='32x32', href=`${base_url}/icons/favicon-32x32.png`)
+        link(rel='icon', type='image/png', sizes='16x16', href=`${base_url}/icons/favicon-16x16.png`)
+        link(rel='manifest', href=`${base_url}/icons/site.webmanifest`)
     body
-        h1 Create Account Form
-        form(method='post', action=create_account_api_src)
-            label(for='name') name :
-            input#name(type='text', name='name', required, minlength='3', maxlength='25')
-            br
-            br
-            label(for='email') email :
-            input#email(type='email', name='email', required)
-            br
-            br
-            label(for='password') password :
-            input#password(type='password', name='password', required, minlength='6',
-            maxlength='20')
-            br
-            br
-            input(type='submit')
+        div.container
+            h2 Create Account Form
+            form(method='post', action=create_account_api_src)
+                div.form-group
+                    label(for='name') name :
+                    input#name(type='text', name='name', required, minlength='3', maxlength='25', class='form-control')
+                div.form-group
+                    label(for='email') email :
+                    input#email(type='email', name='email', required)
+                div.form-group
+                    label(for='password') password :
+                    input#password(type='password', name='password', required, minlength='6',
+                    maxlength='20')
+                div.form-group
+                    input(type='submit', class='btn')

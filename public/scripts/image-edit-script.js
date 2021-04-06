@@ -1,6 +1,6 @@
 const myform = document.getElementById('myform')
 const myfile = document.getElementById('myfile')
-const file_height_width = document.getElementById('file-height-width');
+const file_height_width = document.getElementById('file-height-width')
 
 myfile.onchange = function () {
     const reader = new FileReader() // CREATE AN NEW INSTANCE.
@@ -20,7 +20,8 @@ myfile.onchange = function () {
     reader.readAsDataURL(myfile.files[0])
 }
 
-function formSubmit(){
+function formSubmit() {
     myform.submit()
     myform.reset()
+    file_height_width.textContent = `Height : ${0} px Breadth : ${0} px`
 }

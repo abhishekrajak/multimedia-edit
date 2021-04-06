@@ -4,32 +4,54 @@
     <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Image Resize</title>
     <script async defer></script>
-    <link rel="stylesheet">
     <style>
-      *{
-          font-family: 'Courier New', Courier, monospace;
-          font-size: 1.1rem;
-          text-align: center;
-          background-color: antiquewhite;
+      * {
+          font-family: monospace;
       }
       
+      .container {
+          text-align: center;
+      }
+      
+      h1 {
+          margin: 25px;
+      }
+      
+      input {
+          margin: 7px;
+          border-radius: 10px;
+      }
+      
+      input:focus {
+          outline: none;
+      }
+      
+      .btn{
+          background-color: #c5ffe7;
+      }
     </style>
+    <link rel="apple-touch-icon" sizes="180x180" href="undefined/icons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="undefined/icons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="undefined/icons/favicon-16x16.png">
+    <link rel="manifest" href="undefined/icons/site.webmanifest">
   </head>
   <body>
-    <h1>Image Resize Module</h1>
-    <form method="post">
-      <p>welcome </p>
-      <input type="submit" value="logout"><br><br>
-    </form>
-    <form id="myform" method="post" enctype="multipart/form-data">
-      <label for="myfile">select a file -></label>
-      <input id="myfile" for="myfile" type="file" accept=".jpeg, .png, .jpg" name="myfile" required><br>
-      <p id="file-height-width">Height : 0 px Breadth : 0 px</p>
-      <label for="height"> height(px) :</label>
-      <input id="height" type="number" min="10" max="5000" name="height" required><br>
-      <label for="width"> width(px) :</label>
-      <input id="width" type="number" min="10" max="5000" name="width" required><br>
-      <input type="submit" onclick="formSubmit()">
-    </form>
+    <div class="container">
+      <h1>Image Resize Module</h1>
+      <form method="post">
+        <p>welcome </p>
+        <input type="submit" value="logout">
+      </form>
+      <form id="myform" method="post" enctype="multipart/form-data">
+        <label for="myfile">select a file -></label>
+        <input class="btn" id="myfile" for="myfile" type="file" accept=".jpeg, .png, .jpg" name="myfile" required><br>
+        <p id="file-height-width">Height : 0 px Breadth : 0 px</p>
+        <label for="height"> height(px) :</label>
+        <input id="height" type="number" min="10" max="5000" name="height" required><br>
+        <label for="width"> width(px) :</label>
+        <input id="width" type="number" min="10" max="5000" name="width" required><br>
+        <input type="submit" onclick="formSubmit()">
+      </form>
+    </div>
   </body>
 </html>

@@ -34,15 +34,17 @@ app.locals.create_account_api_src = base_url + '/user/create-account'
 app.locals.redirect_api_src = base_url + '/login'
 app.locals.logout_api_src = base_url + '/user/logout'
 app.locals.create_account_url = base_url + '/create-account'
+app.locals.base_url = base_url
 
 app.get('/', (req, res) => {
     try {
         const decoded = cookieUtils.validateCookie(req, res)
         res.render('image-edit', {
-            image_edit_script_src: req.app.locals.image_edit_scripts_src,
+            image_edit_script_src: req.app.locals.image_edit_script_src,
             image_edit_style_src: req.app.locals.image_edit_style_src,
             image_edit_api_src: req.app.locals.image_edit_api_src,
             name: decoded.name,
+            base_url: req.app.locals.base_url,
         })
     } catch (e) {
         res.redirect('/login')
@@ -57,6 +59,7 @@ app.get('/login', (req, res) => {
         res.render('login', {
             login_api_src: req.app.locals.login_api_src,
             create_account_url: req.app.locals.create_account_url,
+            base_url: req.app.locals.base_url,
         })
     }
 })
@@ -68,6 +71,7 @@ app.get('/create-account', (req, res) => {
     } catch (e) {
         res.render('create-account', {
             create_account_api_src: req.app.locals.create_account_api_src,
+            base_url: req.app.locals.base_url,
         })
     }
 })
@@ -81,6 +85,7 @@ app.get('/demo', (req, res) => {
         image_edit_style_src: req.app.locals.image_edit_style_src,
         image_edit_api_src: req.app.locals.image_edit_api_src,
         name: decoded.name,
+        base_url: req.app.locals.base_url,
     })
 })
 

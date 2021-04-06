@@ -13,6 +13,7 @@ exports.imageResize = catchAsync(async (req, res, next) => {
             .resize(parseInt(req.body.width), parseInt(req.body.height), {
                 fit: 'fill',
             })
+            .withMetadata()
             .toFile(downloadPath)
 
         const readStream = fs.createReadStream(downloadPath)

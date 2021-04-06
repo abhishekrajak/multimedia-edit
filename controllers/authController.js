@@ -20,6 +20,7 @@ exports.login = catchAsync(async (req, res, next) => {
             redirect_script_src: req.app.locals.redirect_script_src,
             redirect_issue_message: 'invalid credentials',
             redirect_api_src: req.app.locals.redirect_api_src,
+            base_url: req.app.locals.base_url,
         })
         return
     }
@@ -34,6 +35,7 @@ exports.login = catchAsync(async (req, res, next) => {
             redirect_script_src: req.app.locals.redirect_script_src,
             redirect_issue_message: 'invalid credentials',
             redirect_api_src: req.app.locals.redirect_api_src,
+            base_url: req.app.locals.base_url,
         })
     }
 })
@@ -59,5 +61,6 @@ exports.createAccount = catchAsync(async (req, res, next) => {
         redirect_script_src: req.app.locals.redirect_script_src,
         redirect_issue_message: 'account already exists',
         redirect_api_src: req.app.locals.redirect_api_src,
+        base_url: req.app.locals.base_url,
     })
 })

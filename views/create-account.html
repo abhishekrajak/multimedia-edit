@@ -5,21 +5,51 @@
     <title>create account</title>
     <style>
       * {
-          background: antiquewhite;
+          font-family: monospace;
+      }
+      
+      .container {
           text-align: center;
       }
+      
+      h1 {
+          margin: 25px;
+      }
+      
+      .btn, input {
+          margin: 7px;
+          border-radius: 10px;
+      }
+      
+      input:focus {
+          outline: none;
+      }
     </style>
+    <link rel="apple-touch-icon" sizes="180x180" href="undefined/icons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="undefined/icons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="undefined/icons/favicon-16x16.png">
+    <link rel="manifest" href="undefined/icons/site.webmanifest">
   </head>
   <body>
-    <h1>Create Account Form</h1>
-    <form method="post">
-      <label for="name">name :</label>
-      <input id="name" type="text" name="name" required minlength="3" maxlength="25"><br><br>
-      <label for="email">email :</label>
-      <input id="email" type="email" name="email" required><br><br>
-      <label for="password">password :</label>
-      <input id="password" type="password" name="password" required minlength="6" maxlength="20"><br><br>
-      <input type="submit">
-    </form>
+    <div class="container">
+      <h2>Create Account Form</h2>
+      <form method="post">
+        <div class="form-group">
+          <label for="name">name :</label>
+          <input class="form-control" id="name" type="text" name="name" required minlength="3" maxlength="25">
+        </div>
+        <div class="form-group">
+          <label for="email">email :</label>
+          <input id="email" type="email" name="email" required>
+        </div>
+        <div class="form-group">
+          <label for="password">password :</label>
+          <input id="password" type="password" name="password" required minlength="6" maxlength="20">
+        </div>
+        <div class="form-group">
+          <input class="btn" type="submit">
+        </div>
+      </form>
+    </div>
   </body>
 </html>

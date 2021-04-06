@@ -1,27 +1,41 @@
 doctype html
-html(lang='en')
-    head
-        meta(charset='UTF-8', name='viewport', content='width=device-width, initial-scale=1.0')
-        title Login
-        style.
-            *{
-                background: antiquewhite;
-                text-align: center;
-            }
-        script.
-            alert('default credentials\nemail : admin@admin.com\npassword : admin123')
-    body
+head
+    meta(charset='UTF-8' name='viewport' content='width=device-width, initial-scale=1.0')
+    title Login
+    style.
+        *{
+            font-family: monospace;
+        }
+        .container{
+            text-align: center;
+        }
+        h1{
+            margin: 25px;
+        }
+        .btn, input{
+            margin: 7px;
+            border-radius: 10px;
+        }
+
+        input:focus{
+            outline: none;
+        }
+    link(rel="apple-touch-icon", sizes="180x180", href=`${base_url}/icons/apple-touch-icon.png`)
+    link(rel='icon', type='image/png', sizes='32x32', href=`${base_url}/icons/favicon-32x32.png`)
+    link(rel='icon', type='image/png', sizes='16x16', href=`${base_url}/icons/favicon-16x16.png`)
+    link(rel='manifest', href=`${base_url}/icons/site.webmanifest`)
+body
+    div.container
         h1 Login Page
-        form(action=login_api_src, method='post')
-            label(for='email') email :
-            input#email(name='email', type='email')
-            br
-            br
-            label(for='password') password :
-            input#password(name='password', type='password', minlength='6', maxlength='20')
-            br
-            br
-            input(type='submit')
-            br
-            br
-        button(onclick=`location.href='${create_account_url}'`) create-account
+        form.form-horizontal(action=login_api_src, method='post')
+            .form-group
+                label(for='email') email :
+                input#email(name='email' type='email', value='admin@admin.com')
+            .form-group
+                label(for='password') password :
+                input#password(name='password' type='password' minlength='6' maxlength='20',
+                value='admin123@@')
+            .form-group
+                input.btn(type='submit')
+            .form-group
+            button.btn(onclick=`'location.href=${create_account_url}'`) create-account
